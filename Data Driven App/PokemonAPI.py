@@ -5,7 +5,6 @@ import requests
 import random
 import pygame
 
-
 main_bg_color = "#c12026"
 app_bg_color = "#fb0605"
 
@@ -28,13 +27,6 @@ class PokeApp:
     def create_menu(self):
         # Menu Frame
         self.menu_frame = tk.Frame(self.root)
-        tk.Label(self.menu_frame, text="PokeApp", font=("Helvetica", 50), bg=main_bg_color, fg="white").place(x=140,y=80)
-        self.poke_entry = tk.Entry(self.menu_frame, width=15, font=("Helvetica", 20))
-        self.poke_entry.place(x=160,y=180)
-        tk.Button(self.menu_frame, text="Search", font=("Helvetica", 12), width=15, command=self.get_poke_info).place(x=200,y=250)
-        tk.Button(self.menu_frame, text="Random", font=("Helvetica", 12), width=15, command=self.get_random_poke).place(x=200,y=300)
-        tk.Button(self.menu_frame, text="Instruction", font=("Helvetica", 12), width=15, command=self.show_instructions).place(x=200,y=350)
-        self.menu_frame.place(x=0, y=0, width=800, height=500)
         
         # Background Image for Menu Frame
         self.main_bg = Image.open("Assets/pokemonmainbg.jpg")
@@ -42,6 +34,14 @@ class PokeApp:
         self.main_poke_bg = ImageTk.PhotoImage(self.main_bg)
         self.main_bg_poke = tk.Label(self.menu_frame, image=self.main_poke_bg)
         self.main_bg_poke.pack()
+        
+        tk.Label(self.menu_frame, text="PokeApp", font=("Helvetica", 50), bg=main_bg_color, fg="white").place(x=140,y=80)
+        self.poke_entry = tk.Entry(self.menu_frame, width=15, font=("Helvetica", 20))
+        self.poke_entry.place(x=160,y=180)
+        tk.Button(self.menu_frame, text="Search", font=("Helvetica", 12), width=15, command=self.get_poke_info, bg="black", fg="white").place(x=200,y=250)
+        tk.Button(self.menu_frame, text="Random", font=("Helvetica", 12), width=15, command=self.get_random_poke, bg="black", fg="white").place(x=200,y=300)
+        tk.Button(self.menu_frame, text="Instruction", font=("Helvetica", 12), width=15, command=self.show_instructions, bg="black", fg="white").place(x=200,y=350)
+        self.menu_frame.place(x=0, y=0, width=800, height=500)
         
     # Function to Create App
     def create_app(self):
@@ -70,24 +70,24 @@ class PokeApp:
         
         # Details about the Pokemon
         self.poke_info_frame = tk.Frame(self.root, bg="white")
-        self.poke_number = tk.Label(self.poke_info_frame, text="", font=("Helvetica", 17), bg="white", fg="black")
-        self.poke_number.grid(row=0, column=0, padx=20, pady=5)
-        self.poke_name = tk.Label(self.poke_info_frame, text="", font=("Helvetica", 17), bg="white", fg="black")
-        self.poke_name.grid(row=0, column=1, padx=40, pady=5)
-        self.poke_type = tk.Label(self.poke_info_frame, text="", font=("Helvetica", 17), bg="white", fg="black")
-        self.poke_type.grid(row=0, column=2, padx=20, pady=5)
-        self.poke_info_frame.place(x=280, y=70, width=510, height=40)
+        self.poke_number = tk.Label(self.poke_info_frame, text="", font=("Helvetica", 18), bg="white", fg="black", width=8)
+        self.poke_number.grid(row=0, column=0, padx=5, pady=5)
+        self.poke_name = tk.Label(self.poke_info_frame, text="", font=("Helvetica", 15), bg="white", fg="black", width=16)
+        self.poke_name.grid(row=0, column=1, padx=5, pady=5)
+        self.poke_type = tk.Label(self.poke_info_frame, text="", font=("Helvetica", 15), bg="white", fg="black", width=16)
+        self.poke_type.grid(row=0, column=2, padx=5, pady=5)
+        self.poke_info_frame.place(x=280, y=70, width=510, height=43)
         
         tk.Button(self.app_frame, text="Information", font=("Helvetica",10), width=20, command=self.show_poke_info, bg="black", fg="white").place(x=280, y=120)
         tk.Button(self.app_frame, text="Abilities", font=("Helvetica", 10), width=20, command=self.show_poke_abilities, bg="black", fg="white").place(x=450, y=120)
         tk.Button(self.app_frame, text="Statistics", font=("Helvetica", 10), width=20, command=self.show_poke_stats, bg="black", fg="white").place(x=620, y=120)
         
         # Display the info, ability, and stats
-        self.poke_text = tk.Text(self.app_frame, wrap = "word", width=46, height=7, font=("Helvetica", 15), bg="white", fg="black")
+        self.poke_text = tk.Text(self.app_frame, wrap = "word", width=45, height=6, font=("Helvetica", 17), bg="white", fg="black")
         self.poke_text.place(x=280, y=150)
         
         # Pokemon Description
-        self.poke_bio = tk.Label(self.app_frame, text="", font=("Helvetica", 15), wraplength=600)
+        self.poke_bio = tk.Label(self.app_frame, text="", font=("Helvetica", 15), wraplength=550)
         self.poke_bio.place(x=200, y=330, width=590, height=160)
         self.app_frame.place(x=0, y=0, width=800, height=500)
         
