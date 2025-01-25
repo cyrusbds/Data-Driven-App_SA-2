@@ -83,7 +83,7 @@ class PokeApp:
         tk.Button(self.app_frame, text="Statistics", font=("Helvetica", 10), width=20, command=self.show_poke_stats, bg="black", fg="white").place(x=620, y=120)
         
         # Display the info, ability, and stats
-        self.poke_text = tk.Text(self.app_frame, wrap = "word", width=45, height=6, font=("Helvetica", 17), bg="white", fg="black")
+        self.poke_text = tk.Text(self.app_frame, wrap = "word", width=39, height=6, font=("Helvetica", 17), bg="white", fg="black")
         self.poke_text.place(x=280, y=150)
         
         # Pokemon Description
